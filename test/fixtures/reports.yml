@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: MyString
+  date: 1
+  country: MyString
+  description: MyText
+  location_id: 1
+  likecount: 1
+
+two:
+  image: MyString
+  date: 1
+  country: MyString
+  description: MyText
+  location_id: 1
+  likecount: 1
