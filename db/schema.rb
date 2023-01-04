@@ -10,22 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_02_204303) do
-
-  create_table "locations", force: :cascade do |t|
-    t.string "country"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2023_01_04_005109) do
 
   create_table "reports", force: :cascade do |t|
     t.string "image"
     t.integer "date"
     t.text "description"
-    t.integer "location_id"
     t.integer "likecount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
   end
 
 end
