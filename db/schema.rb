@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2023_01_04_152916) do
     t.integer "article_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "image"
     t.integer "date"
