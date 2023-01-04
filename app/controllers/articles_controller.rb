@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index
-        render json: Article.all
+        render json: Article.all.order("created_at DESC")
     end
 
     def show
@@ -10,14 +10,22 @@ class ArticlesController < ApplicationController
 
     def create_article
         article = Article.create!(content: params[:content], title: params[:title], published: params[:published], author: params[:author], image: params[:image])
+        ActionCable.server.broadcast('news_feed', {
+          article: article
+        })
         render json: article
     end
 
 
      def create_comment 
         article = Article.find_by!(id: params[:id])
-        comment = Comment.create!(article_id: params[:article_id], user_id: params[:user_id], content: params[:content], likes_count: params[:likes_count])
+        comment = Comment.create!(article_id: article.id, user_id: params[:user_id], content: params[:content], likes_count: params[:likes_count])
         render json: comment
+     end
+
+     def get_comments 
+        comments = Article.find_by(id:params[:id]).comments
+        render json: comments
      end
 
     def delete_comment
