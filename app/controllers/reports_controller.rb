@@ -11,6 +11,9 @@ class ReportsController < ApplicationController
 
     def create
         report = Report.create!(image: params[:image], date: params[:date], description: params[:description], country: params[:country], likecount: params[:likecount])
+        ActionCable.server.broadcast('live_feed', {
+          report: report
+        })
         render json: report
     end
 
