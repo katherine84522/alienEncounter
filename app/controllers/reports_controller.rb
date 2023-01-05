@@ -25,7 +25,7 @@ class ReportsController < ApplicationController
 
     def update
         report = Report.find_by(id:params[:id])
-        report.update(image: params[:image], date: params[:date], description: params[:description], likecount: params[:likecount],country: params[:country])
+        report.update(likecount: params[:likecount])
         render json: report
     end
 end
