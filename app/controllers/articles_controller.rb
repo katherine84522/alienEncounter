@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     end
 
     def create_article
-        article = Article.create!(content: params[:content], title: params[:title], published: params[:published], author: params[:author], image: params[:image])
+        article = Article.create!(content: params[:content], title: params[:title], date: params[:date], year: params[:year],month: params[:month],author: params[:author], image: params[:image])
         ActionCable.server.broadcast('news_feed', {
           article: article
         })
