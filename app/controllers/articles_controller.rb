@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
      def get_comments 
         comments = Article.find_by(id:params[:id]).comments
-        render json: comments
+        render json: comments.order("created_at DESC")
      end
 
     def delete_comment
